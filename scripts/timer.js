@@ -22,9 +22,23 @@ function reset() {
 
 function runTimer() {
     var c = document.getElementById("counter");
-    c.innerHTML = "Sec left " + secLeft;
+    c.innerHTML = formatTime(secLeft);
     if (timerRunning && (secLeft > 0)) {
       secLeft--;
       var t = setTimeout("runTimer()",1000);
     }
+}
+
+function formatTime(seconds) {
+    var minutes = parseInt(seconds/60)
+    var secofmin = seconds % 60;
+
+    if (minutes < 10) {
+	minutes = "0" + minutes;
+    }
+    if (secofmin < 10) {
+	secofmin = "0" + secofmin; 
+    }
+
+    return minutes + ":" + secofmin;
 }
