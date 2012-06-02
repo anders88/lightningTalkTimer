@@ -5,7 +5,7 @@ var secLeft = 300;
 var timerRunning = false;
 
 function start() {
-    if (!timerRunning) {
+   if (!timerRunning) {
 	timerRunning = true;
 	runTimer();
     }
@@ -45,6 +45,11 @@ function runTimer() {
       secLeft--;
       var t = setTimeout("runTimer()",1000);
     }
+    if (timerRunning && (secLeft === 0)) {
+	var snd = document.getElementById("alarmeff");
+	snd.play();
+    }
+
 }
 
 function formatTime(seconds) {
