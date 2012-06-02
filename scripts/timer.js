@@ -1,6 +1,7 @@
 "use strict";
 
-var secLeft = 100;
+var totalSecs = 300;
+var secLeft = 300;
 var timerRunning = false;
 
 function start() {
@@ -15,7 +16,24 @@ function stop() {
 }
 
 function reset() {
-    secLeft = 100;
+    var c = document.getElementById("counter");
+    secLeft = totalSecs;
+    c.innerHTML = formatTime(secLeft);
+}
+
+function adjustTotal(diff) {
+    var clockAtStart = (totalSecs === secLeft);
+    if (totalSecs+diff > 0) {
+	totalSecs = totalSecs + diff;
+    }
+    var tot = document.getElementById("totalTime");
+    tot.innerHTML = formatTime(totalSecs);
+    if (clockAtStart) {
+	secLeft = totalSecs;
+	var c = document.getElementById("counter");
+	c.innerHTML = formatTime(secLeft);
+    }
+
 }
 
 
